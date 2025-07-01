@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .antMatchers("/product/listByCondition").permitAll()
                 .antMatchers("/product/insert").permitAll()
                 .antMatchers("/product/{productId}").permitAll()
+                .antMatchers("/api/orders/**").permitAll() // 允许订单接口匿名访问
 
                 // 2. 其他接口：需认证（如果有其他接口需要保护）
                 .anyRequest().authenticated()

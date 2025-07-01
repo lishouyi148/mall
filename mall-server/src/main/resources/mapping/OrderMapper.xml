@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.dao.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.mall.entity.Order">
+        <id column="order_id" property="orderId" jdbcType="BIGINT"/>
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="address_id" property="addressId" jdbcType="BIGINT"/>
+        <result column="total_amount" property="totalAmount" jdbcType="DECIMAL"/>
+        <result column="payment_amount" property="paymentAmount" jdbcType="DECIMAL"/>
+        <result column="shipping_fee" property="shippingFee" jdbcType="DECIMAL"/>
+        <result column="payment_type" property="paymentType" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP"/>
+        <result column="shipping_time" property="shippingTime" jdbcType="TIMESTAMP"/>
+        <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP"/>
+        <result column="note" property="note" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM orders
+    </select>
+
+    <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT * FROM orders WHERE order_no = #{orderNo}
+    </select>
+
+    <insert id="insert" parameterType="com.mall.entity.Order">
+        INSERT INTO orders (order_no, id, address_id, total_amount, payment_amount, shipping_fee, payment_type, status, payment_time, shipping_time, receive_time, note, create_time, update_time)
+        VALUES (#{orderNo}, #{id}, #{addressId}, #{totalAmount}, #{paymentAmount}, #{shippingFee}, #{paymentType}, #{status}, #{paymentTime}, #{shippingTime}, #{receiveTime}, #{note}, #{createTime}, #{updateTime})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE FROM orders WHERE order_id = #{orderId}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="com.mall.entity.Order">
+        UPDATE orders
+        SET order_no = #{orderNo}, id = #{id}, address_id = #{addressId}, total_amount = #{totalAmount}, payment_amount = #{paymentAmount}, shipping_fee = #{shippingFee}, payment_type = #{paymentType}, status = #{status}, payment_time = #{paymentTime}, shipping_time = #{shippingTime}, receive_time = #{receiveTime}, note = #{note}, create_time = #{createTime}, update_time = #{updateTime}
+        WHERE order_id = #{orderId}
+    </update>
+</mapper>

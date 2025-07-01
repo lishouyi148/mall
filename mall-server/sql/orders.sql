@@ -1,0 +1,71 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : mysql
+ Source Server Type    : MySQL
+ Source Server Version : 80034 (8.0.34)
+ Source Host           : localhost:3306
+ Source Schema         : mall
+
+ Target Server Type    : MySQL
+ Target Server Version : 80034 (8.0.34)
+ File Encoding         : 65001
+
+ Date: 01/07/2025 20:42:07
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `order_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单ID',
+  `order_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '订单编号',
+  `id` bigint UNSIGNED NOT NULL COMMENT '用户ID',
+  `address_id` bigint UNSIGNED NOT NULL COMMENT '收货地址ID',
+  `total_amount` decimal(10, 2) NOT NULL COMMENT '订单总金额',
+  `payment_amount` decimal(10, 2) NOT NULL COMMENT '实付金额',
+  `shipping_fee` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '运费',
+  `payment_type` tinyint UNSIGNED NOT NULL COMMENT '支付方式（1-支付宝，2-微信）',
+  `status` tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '订单状态（0-已取消，1-待付款，2-待发货，3-待收货，4-已完成）',
+  `payment_time` datetime NULL DEFAULT NULL COMMENT '支付时间',
+  `shipping_time` datetime NULL DEFAULT NULL COMMENT '发货时间',
+  `receive_time` datetime NULL DEFAULT NULL COMMENT '收货时间',
+  `note` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '订单备注',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`order_id`) USING BTREE,
+  UNIQUE INDEX `order_no`(`order_no` ASC) USING BTREE,
+  INDEX `user_id`(`id` ASC) USING BTREE,
+  INDEX `address_id`(`address_id` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, '202504010001', 1, 1, 399.00, 399.00, 0.00, 1, 4, '2025-04-01 10:10:00', '2025-04-02 09:00:00', '2025-04-04 15:00:00', '请下午送达', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (2, '202504010002', 2, 2, 899.00, 899.00, 10.00, 2, 4, '2025-04-01 10:15:00', '2025-04-02 10:00:00', '2025-04-05 12:00:00', NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (3, '202504010003', 3, 3, 199.00, 199.00, 0.00, 1, 3, '2025-04-01 10:20:00', '2025-04-02 11:00:00', NULL, '易碎品轻拿轻放', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (4, '202504010004', 4, 4, 299.00, 299.00, 10.00, 2, 2, '2025-04-01 10:25:00', NULL, NULL, NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (5, '202504010005', 5, 5, 1499.00, 1499.00, 0.00, 1, 1, NULL, NULL, NULL, '未付款', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (6, '202504010006', 6, 6, 799.00, 799.00, 0.00, 2, 4, '2025-04-01 10:30:00', '2025-04-02 14:00:00', '2025-04-06 10:00:00', '已签收', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (7, '202504010007', 7, 7, 249.00, 249.00, 10.00, 1, 4, '2025-04-01 10:35:00', '2025-04-02 15:00:00', '2025-04-05 18:00:00', NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (8, '202504010008', 8, 8, 399.00, 399.00, 0.00, 2, 3, '2025-04-01 10:40:00', '2025-04-02 16:00:00', NULL, '顺丰包邮', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (9, '202504010009', 9, 9, 899.00, 899.00, 10.00, 1, 2, '2025-04-01 10:45:00', NULL, NULL, NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (10, '202504010010', 10, 10, 199.00, 199.00, 0.00, 2, 4, '2025-04-01 10:50:00', '2025-04-02 17:00:00', '2025-04-06 09:00:00', '快递员已电话确认', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (11, '202504010011', 11, 11, 299.00, 299.00, 0.00, 1, 4, '2025-04-01 10:55:00', '2025-04-02 18:00:00', '2025-04-04 14:00:00', NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (12, '202504010012', 12, 12, 499.00, 499.00, 10.00, 2, 3, '2025-04-01 11:00:00', '2025-04-02 19:00:00', NULL, '勿日晒', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (13, '202504010013', 13, 13, 349.00, 349.00, 0.00, 1, 2, '2025-04-01 11:05:00', NULL, NULL, NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (14, '202504010014', 14, 14, 599.00, 599.00, 0.00, 2, 1, NULL, NULL, NULL, '待支付', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (15, '202504010015', 15, 15, 699.00, 699.00, 10.00, 1, 4, '2025-04-01 11:10:00', '2025-04-02 20:00:00', '2025-04-05 16:00:00', '已签收', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (16, '202504010016', 16, 16, 199.00, 199.00, 0.00, 2, 4, '2025-04-01 11:15:00', '2025-04-02 21:00:00', '2025-04-06 11:00:00', '无需电话联系', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (17, '202504010017', 17, 17, 299.00, 299.00, 10.00, 1, 3, '2025-04-01 11:20:00', '2025-04-02 22:00:00', NULL, NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (18, '202504010018', 18, 18, 399.00, 399.00, 0.00, 2, 2, '2025-04-01 11:25:00', NULL, NULL, NULL, '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (19, '202504010019', 19, 19, 499.00, 499.00, 0.00, 1, 4, '2025-04-01 11:30:00', '2025-04-02 23:00:00', '2025-04-05 17:00:00', '到付', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (20, '202504010020', 20, 20, 599.00, 599.00, 10.00, 2, 4, '2025-04-01 11:35:00', '2025-04-03 00:00:00', '2025-04-06 13:00:00', '无备注', '2025-06-26 16:16:18', '2025-06-26 16:16:18');
+INSERT INTO `orders` VALUES (22, '202412100001', 1, 2, 150.00, 150.00, 10.00, 1, 1, '2024-12-10 12:00:00', NULL, NULL, '请尽快发货', '2025-06-26 17:25:06', '2025-06-26 17:25:06');
+
+SET FOREIGN_KEY_CHECKS = 1;
