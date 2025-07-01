@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a930e3d7-2f28-403d-ae91-b3c53ecf7ada" name="更改" comment="hyh-product-test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/config/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/controller/MerchantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/DataEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/PageRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/properties/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mall/utils/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f2503e41-0e3c-45b9-8c4d-729e2930d81f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f2503e41-0e3c-45b9-8c4d-729e2930d81f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/dao/MerchantMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/dao/MerchantMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/dao/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/dao/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/entity/AuthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/AuthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/entity/AuthResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/AuthResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/entity/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/entity/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/RegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/entity/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/entity/ResponseResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/mallApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/mallApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mall/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mall/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/MerchantMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/MerchantMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/ProductMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/dao/MerchantMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/dao/MerchantMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/dao/ProductMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/dao/ProductMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/entity/AuthInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/entity/AuthInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/entity/AuthResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/entity/AuthResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/entity/Merchant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/entity/Merchant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/entity/RegisterRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/entity/RegisterRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/entity/ResponseResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/entity/ResponseResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/mallApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/mallApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/service/impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/service/impl/AuthServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mall/service/impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mall/service/impl/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/MerchantMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/MerchantMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/ProductMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="hyh" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;haohaosss&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/haohaosss/project-mall.git&quot;,
+    &quot;accountId&quot;: &quot;354d6189-75e8-4f40-828f-079405a66f77&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\maven\apache-maven-3.9.9" />
+        <option name="localRepository" value="D:\maven\maven-repository" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.9.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2yzjB8SLMllpnND8WUhVuW4kfo0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.mall-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.mall-server [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.mallApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project-mall2/mall-server1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="mallApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mall-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mall.mallApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.mallApplication" />
+        <item itemvalue="Spring Boot.mallApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="a930e3d7-2f28-403d-ae91-b3c53ecf7ada" name="更改" comment="" />
+      <created>1745488180676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745488180676</updated>
+      <workItem from="1750844161396" duration="360000" />
+      <workItem from="1750848254773" duration="7000" />
+      <workItem from="1750901972878" duration="4362000" />
+      <workItem from="1750906355481" duration="200000" />
+      <workItem from="1750906581812" duration="628000" />
+      <workItem from="1750907235572" duration="6000" />
+      <workItem from="1750907438288" duration="2040000" />
+      <workItem from="1750910268033" duration="141000" />
+      <workItem from="1750919075012" duration="33000" />
+      <workItem from="1750920789786" duration="154000" />
+      <workItem from="1750920973494" duration="1474000" />
+      <workItem from="1750996236517" duration="6352000" />
+      <workItem from="1751015829441" duration="430000" />
+      <workItem from="1751092617621" duration="1214000" />
+      <workItem from="1751102356018" duration="320000" />
+      <workItem from="1751102695681" duration="3543000" />
+      <workItem from="1751107525481" duration="546000" />
+      <workItem from="1751206307348" duration="8000" />
+      <workItem from="1751244088403" duration="11461000" />
+      <workItem from="1751293950033" duration="12000" />
+      <workItem from="1751330365593" duration="1118000" />
+      <workItem from="1751331502066" duration="16120000" />
+      <workItem from="1751351469829" duration="187000" />
+      <workItem from="1751351669220" duration="12000" />
+      <workItem from="1751352039374" duration="5211000" />
+      <workItem from="1751357991244" duration="974000" />
+    </task>
+    <task id="LOCAL-00001" summary="hyh-product-test">
+      <option name="closed" value="true" />
+      <created>1750906006001</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750906006001</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hyh-product-test" />
+    <option name="LAST_COMMIT_MESSAGE" value="hyh-product-test" />
+  </component>
+</project>

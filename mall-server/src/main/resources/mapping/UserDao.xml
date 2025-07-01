@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.dao.UserDao">
+    <!-- 查询管理员 -->
+    <select id="findAdminByUsername" resultType="com.mall.entity.Admin">
+        SELECT admin_id AS id, username, password, phone, create_time, update_time
+        FROM admin
+        WHERE username = #{username}
+    </select>
+
+    <!-- 查询商家 -->
+    <select id="findMerchantByUsername" resultType="com.mall.entity.Merchant">
+        SELECT id , username, password, shop_name,
+               contact_name, contact_phone AS phone, address, status,
+               create_time, update_time
+        FROM merchant
+        WHERE username = #{username}
+    </select>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.dao.ProductMapper">
+    <resultMap id="baseMap" type="com.mall.entity.Product">
+        <!-- property是实体类属性 ，  column是数据库列名     -->
+
+    </resultMap>
+
+    <!--    id必须和方法名一致   parameterType是参数类型-->
+
+    <insert id="insertProduct" parameterType="com.mall.entity.Product">
+        insert into product( merchant_id,category_id,name,subtitle,main_image, sub_images, detail,price,stock,
+                             status,
+                             sales,
+                             created_by,
+                             creator_id) values(#{merchant_id}, #{category_id}, #{name},#{subtitle}, #{main_image}, #{sub_images},#{detail},#{price}, #{stock},#{status}, #{sales}, #{created_by}, #{creator_id})
+    </insert>
+    <!-- 分页查询商品 -->
+    <select id="findProductsByPage" resultType="com.mall.entity.Product">
+        SELECT * FROM product LIMIT #{start}, #{pageSize}
+    </select>
+    <!-- 获取商品总条数 -->
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM product
+    </select>
+    <!-- 根据商品名称和状态分页查询商品 -->
+    <select id="findProductsByPageAndCondition" resultType="com.mall.entity.Product">
+        SELECT * FROM product
+        WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="status != null">
+            AND status = #{status}
+        </if>
+        <if test="merchantId != null">
+            AND merchant_id = #{merchantId}
+        </if>
+        LIMIT #{start}, #{pageSize}
+    </select>
+    <!-- 根据商品名称和状态获取总条数 -->
+    <select id="getTotalCountByCondition" resultType="int">
+        SELECT COUNT(*) FROM product
+        WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="status != null">
+            AND status = #{status}
+        </if>
+        <if test="merchantId != null">
+            AND merchant_id = #{merchantId}
+        </if>
+    </select>
+    <!-- 删除商品 -->
+    <delete id="deleteProductById" parameterType="java.lang.Integer">
+        DELETE FROM product WHERE product_id = #{productId}
+    </delete>
+    <!-- 修改商品 -->
+    <update id="updateProduct" parameterType="com.mall.entity.Product">
+        UPDATE product
+        SET merchant_id = #{merchant_id},
+            category_id = #{category_id},
+            name = #{name},
+            subtitle = #{subtitle},
+            main_image = #{main_image},
+            sub_images = #{sub_images},
+            detail = #{detail},
+            price = #{price},
+            stock = #{stock},
+            status = #{status},
+            sales = #{sales},
+            created_by = #{created_by},
+            creator_id = #{creator_id},
+            update_time = CURRENT_TIMESTAMP
+        WHERE product_id = #{product_id}
+    </update>
+</mapper>
