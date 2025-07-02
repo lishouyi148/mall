@@ -76,8 +76,9 @@
             update_time = CURRENT_TIMESTAMP
         WHERE product_id = #{product_id}
     </update>
-   <!-- 根据商品 ID 查询商品信息 -->
-    <select id="getProductById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product">
+
+    <!-- 根据商品ID查询商品信息 -->
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product">
         SELECT * FROM product WHERE product_id = #{productId}
     </select>
 </mapper>

@@ -131,7 +131,11 @@ public class ProductController {
         }
     }
 
-    // 根据商品 ID 查询商品信息
+    /**
+     * 根据商品ID查询商品信息
+     * @param productId 商品ID
+     * @return 商品信息及状态
+     */
     @GetMapping("/{productId}")
     public DataEvent<Product> getProductById(@PathVariable Integer productId) {
         try {
@@ -143,7 +147,7 @@ public class ProductController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return new DataEvent<>(500, "查询失败", null, 0);
+            return new DataEvent<>(500, "查询异常", null, 0);
         }
     }
 }

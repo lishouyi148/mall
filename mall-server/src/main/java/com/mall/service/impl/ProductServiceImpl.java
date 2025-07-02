@@ -52,6 +52,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(Integer productId) {
-        return productMapper.getProductById(productId);
+        return productMapper.selectById(productId);
     }
 }

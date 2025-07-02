@@ -18,6 +18,11 @@ public interface ProductService {
     boolean deleteProductById(Integer productId);
     // 更新商品
     boolean updateProduct(Product product);
-    // 根据商品 ID 查询商品信息
+
+    /**
+     * 根据商品ID查询商品信息
+     * @param productId 商品ID
+     * @return 商品实体对象
+     */
     Product getProductById(Integer productId);
 }
