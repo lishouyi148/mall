@@ -130,4 +130,20 @@ public class ProductController {
             return new DataEvent<>(500, "商品信息更新异常", null, 0);
         }
     }
+
+    // 根据商品 ID 查询商品信息
+    @GetMapping("/{productId}")
+    public DataEvent<Product> getProductById(@PathVariable Integer productId) {
+        try {
+            Product product = productService.getProductById(productId);
+            if (product != null) {
+                return new DataEvent<>(200, "查询成功", product, 1);
+            } else {
+                return new DataEvent<>(404, "商品不存在", null, 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DataEvent<>(500, "查询失败", null, 0);
+        }
+    }
 }

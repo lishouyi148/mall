@@ -21,4 +21,6 @@ public interface ProductMapper {
     int deleteProductById(Integer productId);
     // 更新商品
     int updateProduct(Product product);
+    // 根据商品 ID 查询商品信息
+    Product getProductById(Integer productId);
 }

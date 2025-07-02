@@ -49,4 +49,9 @@ public class ProductServiceImpl implements ProductService {
         int result = productMapper.updateProduct(product);
         return result > 0;
     }
+
+    @Override
+    public Product getProductById(Integer productId) {
+        return productMapper.getProductById(productId);
+    }
 }
