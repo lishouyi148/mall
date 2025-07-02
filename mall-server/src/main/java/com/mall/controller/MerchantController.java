@@ -4,6 +4,7 @@ import com.mall.entity.Merchant;
 import com.mall.entity.ResponseResult;
 import com.mall.dao.MerchantMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -15,6 +16,9 @@ public class MerchantController {
 
     @Autowired
     private MerchantMapper merchantMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 查询所有商家
@@ -34,17 +38,22 @@ public class MerchantController {
     @PostMapping
     public ResponseResult<String> addMerchant(@RequestBody Merchant merchant) {
         try {
-            // 1. 校验用户名唯一性
+            // 1. 校验用户名唯一性（原逻辑保留）
             Merchant existing = merchantMapper.findByUsername(merchant.getUsername());
             if (existing != null) {
                 return ResponseResult.error("用户名已存在");
             }
 
-            // 2. 设置默认值
-            merchant.setStatus(1); // 默认为启用状态
-            merchant.setCreateTime(new Date()); // 创建时间
+            // 2. 新增：加密密码（核心修改）
+            String rawPassword = merchant.getPassword(); // 前端传入的原始密码
+            String encodedPassword = passwordEncoder.encode(rawPassword); // 加密处理
+            merchant.setPassword(encodedPassword); // 替换为加密后的密码
 
-            // 3. 插入数据库
+            // 3. 设置默认值（原逻辑保留）
+            merchant.setStatus(1);
+            merchant.setCreateTime(new Date());
+
+            // 4. 插入数据库（此时存储的是加密密码）
             merchantMapper.insert(merchant);
             return ResponseResult.success("商家新增成功");
         } catch (Exception e) {
