@@ -50,7 +50,6 @@ public class MerchantController {
             merchant.setPassword(encodedPassword); // 替换为加密后的密码
 
             // 3. 设置默认值（原逻辑保留）
-            merchant.setStatus(1);
             merchant.setCreateTime(new Date());
 
             // 4. 插入数据库（此时存储的是加密密码）

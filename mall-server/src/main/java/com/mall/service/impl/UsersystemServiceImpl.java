@@ -39,7 +39,6 @@ public class UsersystemServiceImpl implements UsersystemService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
 
             // 3. 设置默认值
-            user.setStatus(1);
             user.setCreateTime(new Date());
 
             // 4. 插入数据库
