@@ -38,7 +38,10 @@
 
     <update id="updateByPrimaryKey" parameterType="com.mall.entity.Order">
         UPDATE orders
-        SET order_no = #{orderNo}, id = #{id}, address_id = #{addressId}, total_amount = #{totalAmount}, payment_amount = #{paymentAmount}, shipping_fee = #{shippingFee}, payment_type = #{paymentType}, status = #{status}, payment_time = #{paymentTime}, shipping_time = #{shippingTime}, receive_time = #{receiveTime}, note = #{note}, create_time = #{createTime}, update_time = #{updateTime}
+        SET
+<if test="status != null">status = #{status},</if>
+<if test="note != null">note = #{note},</if>
+update_time = NOW()
         WHERE order_id = #{orderId}
     </update>
 </mapper>

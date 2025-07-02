@@ -35,7 +35,8 @@ public class SecurityConfig {
                 .antMatchers("/product/insert").permitAll()
                 .antMatchers("/product/{productId}").permitAll()
                 .antMatchers("/api/orders/**").permitAll() // 允许订单接口匿名访问
-
+                .antMatchers("/product/uploadImage").permitAll()
+                .antMatchers("/uploads/**").permitAll() // 放行上传的静态资源
                 // 2. 其他接口：需认证（如果有其他接口需要保护）
                 .anyRequest().authenticated()
                 .and()
