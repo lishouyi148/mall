@@ -28,6 +28,7 @@ public class SecurityConfig {
                 // 1. 公开接口（无需认证，任何人可访问）
                 .antMatchers("/api/auth/**").permitAll() // 登录/注册接口
                 .antMatchers("/api/merchants/**").permitAll() // 商户所有接口（新增此行）
+                .antMatchers("/api/addresses/**").permitAll() // 地址所有接口
                 .antMatchers("/api/users/**").permitAll() // 用户所有接口（新增此行）
                 .antMatchers("OPTIONS").permitAll() // 预检请求
                 .antMatchers("/product/list").permitAll() // 允许所有人访问商品列表接口
