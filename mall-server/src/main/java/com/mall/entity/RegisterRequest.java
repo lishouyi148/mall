@@ -2,6 +2,8 @@ package com.mall.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class RegisterRequest {
     private String username;
@@ -14,4 +16,11 @@ public class RegisterRequest {
     private String contactName;
     private String contactPhone;
     private String address;
+
+    // 新增普通用户可能需要的字段
+    private String nickname;
+    private String email;
+    private String avatar;
+    private Integer gender;
+    private Date birthday;
 }

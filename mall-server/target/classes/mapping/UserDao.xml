@@ -17,4 +17,19 @@
         FROM merchant
         WHERE username = #{username}
     </select>
+
+    <select id="findUserByUsername" resultType="com.mall.entity.User">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+
+    <!-- 新增插入方法 -->
+    <insert id="insertUser" parameterType="com.mall.entity.User">
+        INSERT INTO user (
+            username, password, nickname, phone, email,
+            avatar, gender, birthday, status, create_time
+        ) VALUES (
+                     #{username}, #{password}, #{nickname}, #{phone}, #{email},
+                     #{avatar}, #{gender}, #{birthday}, #{status}, #{createTime}
+                 )
+    </insert>
 </mapper>
