@@ -11,7 +11,5 @@ public class mallApplication {
         SpringApplication app = new SpringApplication(mallApplication.class);
         app.setAllowCircularReferences(true);  // 允许循环依赖
         app.run(args);
-
-
     }
 }
