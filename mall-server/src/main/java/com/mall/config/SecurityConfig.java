@@ -42,8 +42,10 @@ public class SecurityConfig {
                 .antMatchers("/category/all").permitAll()//获取商品信息
                 .antMatchers("/category/{categoryId}").permitAll()//删除分类信息
                 .antMatchers("/category/add").permitAll()//新增分类信息
-                .antMatchers("/category/{categoryId}/products").permitAll()//
-                .antMatchers("/category/{categoryId}/all-products").permitAll()//
+                .antMatchers("/category/{categoryId}/products").permitAll()
+                .antMatchers("/category/{categoryId}/all-products").permitAll()
+                .antMatchers("/category/sales/first-level").permitAll()//
+                .antMatchers("/product/price-range-sales").permitAll()//
                 // 2. 其他接口：需认证（如果有其他接口需要保护）
                 .anyRequest().authenticated()
                 .and()

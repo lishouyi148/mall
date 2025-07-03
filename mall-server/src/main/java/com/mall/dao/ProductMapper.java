@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface ProductMapper {
@@ -42,4 +43,16 @@ public interface ProductMapper {
      * @return 商品列表
      */
     List<Product> findProductsByCategoryIds(@Param("categoryIds") List<Integer> categoryIds);
+    /**
+     * 根据分类 ID 列表获取这些分类下商品的总销量
+     * @param categoryIds 分类 ID 列表
+     * @return 分类 ID 和总销量的映射列表
+     */
+    List<Map<String, Object>> getTotalSalesByCategoryIds(List<Integer> categoryIds);
+
+    /**
+     * 查询不同价格区间的总销量
+     * @return 价格区间和总销量的映射列表
+     */
+    List<Map<String, Object>> getSalesByPriceRange();
 }

@@ -92,7 +92,7 @@
     </update>
 
     <!-- 根据商品ID查询商品信息 -->
-    <select id="selectById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product">
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product" resultMap="BaseResultMap">
         SELECT * FROM product WHERE product_id = #{productId}
     </select>
 <!--    分类查询-->
@@ -107,5 +107,38 @@
             #{id}
         </foreach>
         AND status = 1 <!-- 只查询上架商品 -->
+    </select>
+    <select id="getTotalSalesByCategoryIds" resultType="java.util.Map">
+        SELECT
+        category_id,
+        SUM(sales) AS total_sales
+        FROM
+        product
+        WHERE
+        category_id IN
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        GROUP BY
+        category_id
+    </select>
+    <select id="getSalesByPriceRange" resultType="java.util.Map">
+        SELECT
+            CASE
+                WHEN price BETWEEN 0 AND 100 THEN '0-100'
+                WHEN price BETWEEN 101 AND 500 THEN '100-500'
+                WHEN price BETWEEN 501 AND 1000 THEN '500-1000'
+                ELSE '1000+'
+                END AS price_range,
+            SUM(sales) AS total_sales
+        FROM
+            product
+        GROUP BY
+            CASE
+                WHEN price BETWEEN 0 AND 100 THEN '0-100'
+                WHEN price BETWEEN 101 AND 500 THEN '100-500'
+                WHEN price BETWEEN 501 AND 1000 THEN '500-1000'
+                ELSE '1000+'
+                END
     </select>
 </mapper>

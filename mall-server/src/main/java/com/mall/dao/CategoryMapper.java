@@ -31,4 +31,5 @@ public interface CategoryMapper {
      * @return 子分类列表
      */
     List<Category> getChildrenByParentId(Integer parentId);
+
 }

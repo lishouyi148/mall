@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/category")
@@ -129,5 +130,14 @@ public class CategoryController {
             e.printStackTrace();
             return new DataEvent<>(500, "查询异常", null, 0);
         }
+    }
+    /**
+     * 获取一级分类及其子分类的总销量
+     * @return 分类 ID 和总销量的映射列表
+     */
+    @GetMapping("/sales/first-level")
+    public DataEvent<List<Map<String, Object>>> getTotalSalesByFirstLevelCategory() {
+        List<Map<String, Object>> salesMap = categoryService.getTotalSalesByFirstLevelCategory();
+        return new DataEvent<>(200, "查询成功", salesMap, salesMap.size());
     }
 }

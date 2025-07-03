@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -62,5 +63,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findProductsByCategoryIds(List<Integer> categoryIds) {
         return productMapper.findProductsByCategoryIds(categoryIds);
+    }
+    @Override
+    public List<Map<String, Object>> getSalesByPriceRange() {
+        return productMapper.getSalesByPriceRange();
     }
 }

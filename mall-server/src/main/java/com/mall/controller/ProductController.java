@@ -11,6 +11,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Value;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -148,6 +149,21 @@ public class ProductController {
         } catch (Exception e) {
             e.printStackTrace();
             return new DataEvent<>(500, "查询异常", null, 0);
+        }
+    }
+
+    /**
+     * 查询不同价格区间的总销量
+     * @return 价格区间和总销量的映射列表
+     */
+    @GetMapping("/price-range-sales")
+    public DataEvent<List<Map<String, Object>>> getSalesByPriceRange() {
+        try {
+            List<Map<String, Object>> data = productService.getSalesByPriceRange();
+            return new DataEvent<>(200, "查询成功", data, data.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DataEvent<>(500, "查询失败", null, 0);
         }
     }
 }

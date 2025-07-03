@@ -3,6 +3,7 @@ package com.mall.service;
 import com.mall.entity.Product;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
     boolean insertProduct(Product product);
@@ -37,4 +38,10 @@ public interface ProductService {
      * @return 商品列表
      */
     List<Product> findProductsByCategoryIds(List<Integer> categoryIds);
+
+    /**
+     * 查询不同价格区间的总销量
+     * @return 价格区间和总销量的映射列表
+     */
+    List<Map<String, Object>> getSalesByPriceRange();
 }
