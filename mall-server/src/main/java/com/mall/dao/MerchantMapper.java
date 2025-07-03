@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface MerchantMapper {
@@ -14,4 +15,6 @@ public interface MerchantMapper {
     void update(Merchant merchant);
     List<Merchant> findAll();
     void deleteById(@Param("id") Integer id); // 参数名改为 id
+
+    List<Map<String, Object>> countMerchantsByProvince();
 }

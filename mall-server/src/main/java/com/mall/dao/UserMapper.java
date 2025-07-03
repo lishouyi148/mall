@@ -1,5 +1,6 @@
 package com.mall.dao;
 
+import com.mall.entity.AgeGroupCountDTO;
 import com.mall.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -14,4 +15,6 @@ public interface UserMapper {
     void update(User user);
     void deleteById(@Param("id") Integer id); // id改为Integer
     List<User> findAll();
+
+    List<AgeGroupCountDTO> countByAgeGroup();
 }

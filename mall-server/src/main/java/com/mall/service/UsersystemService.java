@@ -1,5 +1,6 @@
 package com.mall.service;
 
+import com.mall.entity.AgeGroupCountDTO;
 import com.mall.entity.ResponseResult;
 import com.mall.entity.User;
 
@@ -12,4 +13,6 @@ public interface UsersystemService {
     ResponseResult<String> updateUser(Integer id, User user);
     ResponseResult<String> deleteUser(Integer id);
     ResponseResult<User> getUserById(Integer id);
+
+    ResponseResult<List<AgeGroupCountDTO>> countUsersByAgeGroup();
 }

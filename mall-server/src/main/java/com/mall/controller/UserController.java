@@ -1,5 +1,6 @@
 package com.mall.controller;
 
+import com.mall.entity.AgeGroupCountDTO;
 import com.mall.entity.ResponseResult;
 import com.mall.entity.User;
 import com.mall.service.UsersystemService;
@@ -47,4 +48,10 @@ public class UserController {
     public ResponseResult<User> getUserById(@PathVariable Integer id) {  // 修改为Integer
         return userService.getUserById(id);
     }
+
+    @GetMapping("/age-group/count")
+    public ResponseResult<List<AgeGroupCountDTO>> getUsersCountByAgeGroup() {
+        return userService.countUsersByAgeGroup();
+    }
 }
+

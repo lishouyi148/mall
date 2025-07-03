@@ -1,6 +1,7 @@
 package com.mall.service.impl;
 
 import com.mall.dao.UserMapper;
+import com.mall.entity.AgeGroupCountDTO;
 import com.mall.entity.ResponseResult;
 import com.mall.entity.User;
 import com.mall.service.UsersystemService;
@@ -104,5 +105,16 @@ public class UsersystemServiceImpl implements UsersystemService {
             return ResponseResult.error("用户不存在");
         }
         return ResponseResult.success(user);
+    }
+
+    @Override
+    public ResponseResult<List<AgeGroupCountDTO>> countUsersByAgeGroup() {
+        try {
+            List<AgeGroupCountDTO> result = userMapper.countByAgeGroup();
+            return ResponseResult.success(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseResult.error("查询年龄段统计失败：" + e.getMessage());
+        }
     }
 }
