@@ -23,10 +23,10 @@ public class OrderController {
         return ResponseEntity.ok(pageInfo);
     }
 
-    // 根据订单编号查询订单
-    @GetMapping("/{orderNo}")
-    public ResponseEntity<Order> getOrderByNo(@PathVariable String orderNo) {
-        Order order = orderService.getOrderByNo(orderNo);
+    // 根据订单ID查询订单
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> getOrderById(@PathVariable Long orderId) {
+        Order order = orderService.getOrderById(orderId);
         return order != null ? ResponseEntity.ok(order) : ResponseEntity.notFound().build();
     }
 
@@ -45,8 +45,9 @@ public class OrderController {
     }
 
     // 更新订单
-    @PutMapping
-    public ResponseEntity<Integer> updateOrder(@RequestBody Order order) {
+    @PutMapping("/{orderId}")
+    public ResponseEntity<Integer> updateOrder(@PathVariable Long orderId, @RequestBody Order order) {
+        order.setOrderId(orderId);
         int result = orderService.updateOrder(order);
         return result > 0 ? ResponseEntity.ok(result) : ResponseEntity.notFound().build();
     }

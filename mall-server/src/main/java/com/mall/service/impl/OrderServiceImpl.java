@@ -23,8 +23,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrderByNo(String orderNo) {
-        return orderMapper.selectByOrderNo(orderNo);
+    public Order getOrderById(Long orderId) {
+        return orderMapper.selectByOrderId(orderId);
     }
 
     @Override

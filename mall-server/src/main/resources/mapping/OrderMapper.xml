@@ -3,45 +3,55 @@
 <mapper namespace="com.mall.dao.OrderMapper">
     <resultMap id="BaseResultMap" type="com.mall.entity.Order">
         <id column="order_id" property="orderId" jdbcType="BIGINT"/>
-        <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
-        <result column="id" property="id" jdbcType="BIGINT"/>
-        <result column="address_id" property="addressId" jdbcType="BIGINT"/>
-        <result column="total_amount" property="totalAmount" jdbcType="DECIMAL"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="quantity" property="quantity" jdbcType="INTEGER"/>
+        <result column="current_price" property="currentPrice" jdbcType="DECIMAL"/>
         <result column="payment_amount" property="paymentAmount" jdbcType="DECIMAL"/>
-        <result column="shipping_fee" property="shippingFee" jdbcType="DECIMAL"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
         <result column="payment_type" property="paymentType" jdbcType="INTEGER"/>
-        <result column="status" property="status" jdbcType="INTEGER"/>
-        <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP"/>
-        <result column="shipping_time" property="shippingTime" jdbcType="TIMESTAMP"/>
+        <result column="shipping_fee" property="shippingFee" jdbcType="DECIMAL"/>
         <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP"/>
+        <result column="shipping_time" property="shippingTime" jdbcType="TIMESTAMP"/>
+        <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP"/>
         <result column="note" property="note" jdbcType="VARCHAR"/>
-        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
-        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT * FROM orders
+        SELECT * FROM simplified_orders
     </select>
 
-    <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
-        SELECT * FROM orders WHERE order_no = #{orderNo}
+    <select id="selectByOrderId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT * FROM simplified_orders WHERE order_id = #{orderId}
     </select>
 
     <insert id="insert" parameterType="com.mall.entity.Order">
-        INSERT INTO orders (order_no, id, address_id, total_amount, payment_amount, shipping_fee, payment_type, status, payment_time, shipping_time, receive_time, note, create_time, update_time)
-        VALUES (#{orderNo}, #{id}, #{addressId}, #{totalAmount}, #{paymentAmount}, #{shippingFee}, #{paymentType}, #{status}, #{paymentTime}, #{shippingTime}, #{receiveTime}, #{note}, #{createTime}, #{updateTime})
+        INSERT INTO simplified_orders (product_name, quantity, current_price, payment_amount, user_name, payment_type, shipping_fee, receive_time, shipping_time, payment_time, note, status, shipping_address)
+        VALUES (#{productName}, #{quantity}, #{currentPrice}, #{paymentAmount}, #{userName}, #{paymentType}, #{shippingFee}, #{receiveTime}, #{shippingTime}, #{paymentTime}, #{note}, #{status}, #{shippingAddress})
     </insert>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        DELETE FROM orders WHERE order_id = #{orderId}
+        DELETE FROM simplified_orders WHERE order_id = #{orderId}
     </delete>
 
     <update id="updateByPrimaryKey" parameterType="com.mall.entity.Order">
-        UPDATE orders
-        SET
-<if test="status != null">status = #{status},</if>
+        UPDATE simplified_orders
+        <set>
+<if test="productName != null">product_name = #{productName},</if>
+<if test="quantity != null">quantity = #{quantity},</if>
+<if test="currentPrice != null">current_price = #{currentPrice},</if>
+<if test="paymentAmount != null">payment_amount = #{paymentAmount},</if>
+<if test="userName != null">user_name = #{userName},</if>
+<if test="paymentType != null">payment_type = #{paymentType},</if>
+<if test="shippingFee != null">shipping_fee = #{shippingFee},</if>
+<if test="receiveTime != null">receive_time = #{receiveTime},</if>
+<if test="shippingTime != null">shipping_time = #{shippingTime},</if>
+<if test="paymentTime != null">payment_time = #{paymentTime},</if>
 <if test="note != null">note = #{note},</if>
-update_time = NOW()
+<if test="status != null">status = #{status},</if>
+<if test="shippingAddress != null">shipping_address = #{shippingAddress}</if>
+        </set>
         WHERE order_id = #{orderId}
     </update>
 </mapper>

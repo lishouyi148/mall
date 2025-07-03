@@ -8,21 +8,20 @@ import lombok.Data;
 @Data
 public class Order {
     private Long orderId;
-    private String orderNo;
-    private Long id; // userId
-    private Long addressId;
-    private BigDecimal totalAmount;
+    private String productName;
+    private Integer quantity;
+    private BigDecimal currentPrice;
     private BigDecimal paymentAmount;
-    private BigDecimal shippingFee;
+    private String userName;
     private Integer paymentType;
-    private Integer status;
+    private BigDecimal shippingFee;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date paymentTime;
+    private Date receiveTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date shippingTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date receiveTime;
+    private Date paymentTime;
     private String note;
-    private Date createTime;
-    private Date updateTime;
+    private Integer status;
+    private String shippingAddress;
 }

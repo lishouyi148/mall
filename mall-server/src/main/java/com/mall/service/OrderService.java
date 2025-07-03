@@ -8,7 +8,7 @@ public interface OrderService {
     PageInfo<Order> getAllOrders(int pageNum, int pageSize);
     
     // 根据订单编号查询订单
-    Order getOrderByNo(String orderNo);
+    Order getOrderById(Long orderId);
     
     // 新增订单
     int addOrder(Order order);

@@ -10,8 +10,8 @@ public interface OrderMapper {
     // 分页查询所有订单
     List<Order> selectAll();
     
-    // 根据订单编号查询订单
-    Order selectByOrderNo(@Param("orderNo") String orderNo);
+    // 根据订单ID查询订单
+    Order selectByOrderId(@Param("orderId") Long orderId);
     
     // 新增订单
     int insert(Order order);
