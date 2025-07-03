@@ -21,4 +21,10 @@ public interface CategoryService {
     boolean addCategory(Category category);
     boolean updateCategory(Category category);
     Category getCategoryById(Integer categoryId);
+    /**
+     * 获取指定分类及其所有子分类的ID
+     * @param categoryId 分类 ID
+     * @return 分类ID列表
+     */
+    List<Integer> getCategoryAndChildrenIds(Integer categoryId);
 }

@@ -3,7 +3,9 @@ package com.mall.controller;
 import com.github.pagehelper.PageInfo;
 import com.mall.entity.Category;
 import com.mall.entity.DataEvent;
+import com.mall.entity.Product;
 import com.mall.service.CategoryService;
+import com.mall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,8 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-
+    @Autowired
+    private ProductService productService;
     // 分页查询商品分类
     @GetMapping("/list")
     public ResponseEntity<PageInfo<Category>> getCategories(
@@ -87,6 +90,41 @@ public class CategoryController {
             } else {
                 return new DataEvent<>(404, "分类不存在", null, 0);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DataEvent<>(500, "查询异常", null, 0);
+        }
+    }
+    /**
+     * 根据分类 ID 获取该分类下的商品名称
+     * @param categoryId 分类 ID
+     * @return 商品名称列表
+     */
+    @GetMapping("/{categoryId}/products")
+    public DataEvent<List<String>> getProductsByCategoryId(@PathVariable Integer categoryId) {
+        try {
+            List<String> productNames = productService.findProductNamesByCategoryId(categoryId);
+            return new DataEvent<>(200, "查询成功", productNames, 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DataEvent<>(500, "查询异常", null, 0);
+        }
+    }
+    /**
+     * 根据一级分类 ID 获取该分类及其所有子分类下的商品
+     * @param categoryId 一级分类 ID
+     * @return 商品列表
+     */
+    @GetMapping("/{categoryId}/all-products")
+    public DataEvent<List<Product>> getProductsByParentCategoryId(@PathVariable Integer categoryId) {
+        try {
+            // 获取该一级分类及其所有子分类的ID
+            List<Integer> categoryIds = categoryService.getCategoryAndChildrenIds(categoryId);
+
+            // 根据分类ID列表查询商品
+            List<Product> products = productService.findProductsByCategoryIds(categoryIds);
+
+            return new DataEvent<>(200, "查询成功", products, products.size());
         } catch (Exception e) {
             e.printStackTrace();
             return new DataEvent<>(500, "查询异常", null, 0);

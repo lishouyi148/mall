@@ -2,8 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mall.dao.ProductMapper">
-    <resultMap id="baseMap" type="com.mall.entity.Product">
-        <!-- property是实体类属性 ，  column是数据库列名     -->
+    <resultMap id="BaseResultMap" type="com.mall.entity.Product">
+        <id column="product_id" property="productId" jdbcType="INTEGER" />
+        <result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+        <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
+        <result column="main_image" property="mainImage" jdbcType="VARCHAR" />
+        <result column="sub_images" property="subImages" jdbcType="VARCHAR" />
+        <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="stock" property="stock" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="sales" property="sales" jdbcType="INTEGER" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 
     </resultMap>
 
@@ -80,5 +95,18 @@
     <!-- 根据商品ID查询商品信息 -->
     <select id="selectById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product">
         SELECT * FROM product WHERE product_id = #{productId}
+    </select>
+<!--    分类查询-->
+    <select id="findProductNamesByCategoryId" resultType="java.lang.String">
+        SELECT name FROM product WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="findProductsByCategoryIds" resultType="com.mall.entity.Product">
+        SELECT * FROM product
+        WHERE category_id IN
+        <foreach collection="categoryIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        AND status = 1 <!-- 只查询上架商品 -->
     </select>
 </mapper>

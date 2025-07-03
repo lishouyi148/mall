@@ -24,4 +24,11 @@ public interface CategoryMapper {
     int insertCategory(Category category);
     int updateCategory(Category category);
     Category getCategoryById(@Param("categoryId") Integer categoryId);
+
+    /**
+     * 根据父分类ID获取子分类
+     * @param parentId 父分类ID
+     * @return 子分类列表
+     */
+    List<Category> getChildrenByParentId(Integer parentId);
 }

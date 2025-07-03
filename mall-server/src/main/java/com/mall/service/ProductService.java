@@ -25,4 +25,16 @@ public interface ProductService {
      * @return 商品实体对象
      */
     Product getProductById(Integer productId);
+    /**
+     * 根据分类 ID 查询商品名称
+     * @param categoryId 分类 ID
+     * @return 商品名称列表
+     */
+    List<String> findProductNamesByCategoryId(Integer categoryId);
+    /**
+     * 根据分类ID列表查询商品
+     * @param categoryIds 分类ID列表
+     * @return 商品列表
+     */
+    List<Product> findProductsByCategoryIds(List<Integer> categoryIds);
 }

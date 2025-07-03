@@ -88,4 +88,9 @@
         WHERE
             category_id = #{categoryId}
     </select>
+    <select id="getChildrenByParentId" resultMap="CategoryResultMap">
+        SELECT * FROM category
+        WHERE parent_id = #{parentId}
+        AND status = 1 <!-- 只查询启用的分类 -->
+    </select>
 </mapper>
