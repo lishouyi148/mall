@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/merchants")
@@ -22,6 +23,7 @@ public class MerchantController {
 
     /**
      * 查询所有商家
+     *
      * @return 商家列表
      */
     @GetMapping
@@ -32,6 +34,7 @@ public class MerchantController {
 
     /**
      * 新增商家
+     *
      * @param merchant 商家信息（包含username、password、shopName等）
      * @return 操作结果
      */
@@ -63,7 +66,8 @@ public class MerchantController {
 
     /**
      * 更新商家信息
-     * @param id 商家主键id
+     *
+     * @param id       商家主键id
      * @param merchant 新的商家信息
      * @return 操作结果
      */
@@ -93,6 +97,7 @@ public class MerchantController {
 
     /**
      * 删除商家
+     *
      * @param id 商家主键id
      * @return 操作结果
      */
@@ -116,6 +121,7 @@ public class MerchantController {
 
     /**
      * 按id查询单个商家
+     *
      * @param id 主键id
      * @return 商家详情
      */
@@ -126,5 +132,19 @@ public class MerchantController {
             return ResponseResult.error("商家不存在");
         }
         return ResponseResult.success(merchant);
+    }
+
+    @GetMapping("/count-by-province")
+    public ResponseResult<List<Map<String, Object>>> countMerchantsByProvince() {
+        try {
+            List<Map<String, Object>> result = merchantMapper.countMerchantsByProvince();
+            System.out.println("SQL查询结果:" + result); // 打印 [{province=北京市, merchant_count=2}, ...]
+            ResponseResult<List<Map<String, Object>>> response = ResponseResult.success(result);
+            System.out.println("接口返回JSON:" + new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(response));
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseResult.error("统计失败：" + e.getMessage());
+        }
     }
 }

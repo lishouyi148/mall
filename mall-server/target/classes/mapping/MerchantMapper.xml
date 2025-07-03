@@ -76,4 +76,16 @@
     <delete id="deleteById" parameterType="java.lang.Integer">
         DELETE FROM merchant WHERE id = #{id}
     </delete>
+
+    <select id="countMerchantsByProvince" resultType="java.util.Map">
+        SELECT
+            SUBSTRING_INDEX(address, ' ', 1) AS province,
+            COUNT(*) AS merchant_count
+        FROM
+            merchant
+        WHERE
+            address IS NOT NULL AND address != ''
+        GROUP BY
+            SUBSTRING_INDEX(address, ' ', 1)
+    </select>
 </mapper>

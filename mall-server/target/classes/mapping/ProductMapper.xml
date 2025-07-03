@@ -2,9 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mall.dao.ProductMapper">
-    <resultMap id="baseMap" type="com.mall.entity.Product">
-        <!-- property是实体类属性 ，  column是数据库列名     -->
-
+    <resultMap id="BaseResultMap" type="com.mall.entity.Product">
+        <id column="product_id" property="product_id" jdbcType="INTEGER" />
+        <result column="merchant_id" property="merchant_id" jdbcType="INTEGER" />
+        <result column="category_id" property="category_id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
+        <result column="main_image" property="main_image" jdbcType="VARCHAR" />
+        <result column="sub_images" property="sub_images" jdbcType="VARCHAR" />
+        <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="stock" property="stock" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="sales" property="sales" jdbcType="INTEGER" />
+        <result column="created_by" property="created_by" jdbcType="VARCHAR" />
+        <result column="creator_id" property="creator_id" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <!--    id必须和方法名一致   parameterType是参数类型-->
@@ -17,7 +31,7 @@
                              creator_id) values(#{merchant_id}, #{category_id}, #{name},#{subtitle}, #{main_image}, #{sub_images},#{detail},#{price}, #{stock},#{status}, #{sales}, #{created_by}, #{creator_id})
     </insert>
     <!-- 分页查询商品 -->
-    <select id="findProductsByPage" resultType="com.mall.entity.Product">
+    <select id="findProductsByPage" resultType="com.mall.entity.Product" resultMap="BaseResultMap">
         SELECT * FROM product LIMIT #{start}, #{pageSize}
     </select>
     <!-- 获取商品总条数 -->
@@ -25,7 +39,7 @@
         SELECT COUNT(*) FROM product
     </select>
     <!-- 根据商品名称和状态分页查询商品 -->
-    <select id="findProductsByPageAndCondition" resultType="com.mall.entity.Product">
+    <select id="findProductsByPageAndCondition" resultType="com.mall.entity.Product" resultMap="BaseResultMap">
         SELECT * FROM product
         WHERE 1 = 1
         <if test="name != null and name != ''">
@@ -80,5 +94,18 @@
     <!-- 根据商品ID查询商品信息 -->
     <select id="selectById" parameterType="java.lang.Integer" resultType="com.mall.entity.Product">
         SELECT * FROM product WHERE product_id = #{productId}
+    </select>
+<!--    分类查询-->
+    <select id="findProductNamesByCategoryId" resultType="java.lang.String">
+        SELECT name FROM product WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="findProductsByCategoryIds" resultType="com.mall.entity.Product">
+        SELECT * FROM product
+        WHERE category_id IN
+        <foreach collection="categoryIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        AND status = 1 <!-- 只查询上架商品 -->
     </select>
 </mapper>
