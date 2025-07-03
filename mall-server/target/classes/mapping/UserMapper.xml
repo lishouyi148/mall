@@ -78,4 +78,28 @@
     <select id="findAll" resultMap="BaseResultMap">
         SELECT * FROM user ORDER BY create_time DESC
     </select>
+
+    <!-- 新增：统计各年龄段用户数量 -->
+    <select id="countByAgeGroup" resultType="com.mall.entity.AgeGroupCountDTO">
+        SELECT
+        CASE
+        WHEN TIMESTAMPDIFF(YEAR, birthday, CURDATE()) BETWEEN 1 AND 25 THEN '1-25'
+        WHEN TIMESTAMPDIFF(YEAR, birthday, CURDATE()) BETWEEN 26 AND 50 THEN '26-50'
+        WHEN TIMESTAMPDIFF(YEAR, birthday, CURDATE()) BETWEEN 51 AND 75 THEN '51-75'
+        WHEN TIMESTAMPDIFF(YEAR, birthday, CURDATE()) BETWEEN 76 AND 100 THEN '76-100'
+        ELSE '其他'
+        END AS ageGroup,
+        COUNT(*) AS count
+        FROM user
+        WHERE birthday IS NOT NULL  -- 排除未填写生日的用户
+        GROUP BY ageGroup
+        ORDER BY
+        CASE ageGroup
+        WHEN '1-25' THEN 1
+        WHEN '26-50' THEN 2
+        WHEN '51-75' THEN 3
+        WHEN '76-100' THEN 4
+        ELSE 5
+        END;  -- 按年龄段顺序排序
+    </select>
 </mapper>
