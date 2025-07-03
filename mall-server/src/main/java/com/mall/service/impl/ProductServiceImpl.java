@@ -54,4 +54,13 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(Integer productId) {
         return productMapper.selectById(productId);
     }
+
+    @Override
+    public List<String> findProductNamesByCategoryId(Integer categoryId) {
+        return productMapper.findProductNamesByCategoryId(categoryId);
+    }
+    @Override
+    public List<Product> findProductsByCategoryIds(List<Integer> categoryIds) {
+        return productMapper.findProductsByCategoryIds(categoryIds);
+    }
 }

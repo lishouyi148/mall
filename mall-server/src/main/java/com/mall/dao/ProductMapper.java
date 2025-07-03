@@ -1,6 +1,7 @@
 package com.mall.dao;
 
 import com.mall.entity.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,4 +29,17 @@ public interface ProductMapper {
      * @return 商品实体对象
      */
     Product selectById(Integer productId);
+    /**
+     * 根据分类 ID 查询商品名称
+     * @param categoryId 分类 ID
+     * @return 商品名称列表
+     */
+    List<String> findProductNamesByCategoryId(Integer categoryId);
+
+    /**
+     * 根据分类ID列表查询商品
+     * @param categoryIds 分类ID列表
+     * @return 商品列表
+     */
+    List<Product> findProductsByCategoryIds(@Param("categoryIds") List<Integer> categoryIds);
 }

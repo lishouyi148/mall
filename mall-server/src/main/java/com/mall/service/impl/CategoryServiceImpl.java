@@ -8,6 +8,7 @@ import com.mall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -55,5 +56,18 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategoryById(Integer categoryId) {
         return categoryMapper.getCategoryById(categoryId);
+    }
+    @Override
+    public List<Integer> getCategoryAndChildrenIds(Integer categoryId) {
+        List<Integer> categoryIds = new ArrayList<>();
+        categoryIds.add(categoryId); // 添加一级分类ID
+
+        // 获取所有子分类
+        List<Category> children = categoryMapper.getChildrenByParentId(categoryId);
+        for (Category child : children) {
+            categoryIds.add(child.getCategoryId());
+        }
+
+        return categoryIds;
     }
 }
